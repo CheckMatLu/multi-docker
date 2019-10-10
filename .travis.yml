@@ -14,7 +14,8 @@ after_success:
     - docker build -t checkmatlu/multi-server ./server
     - docker build -t checkmatlu/multi-worker ./worker
     # Login to docker CLI
-    - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+    #- echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+    - docker login -u "$DOCKER_ID" -p "$DOCKER_PASSWORD" docker.io
     
     # Take those images and push it to Docker hub
     - docker push checkmatlu/multi-client
